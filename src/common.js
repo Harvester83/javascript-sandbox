@@ -1,66 +1,60 @@
-// var
-// 1. Что значит function scope (не block)
-// Ты можешь подумать: "x внутри {} → значит снаружи не видно"
-// НО с var это НЕ так 
-// Результат: 5
+// console.log(a); // undefined 
+// let a = 10;
 
-var x = 15;
+// var поднимается
+// автоматически получает undefined
 
-if (true) {
-  var x = 5;
-}
-
-console.log(x); // 5
-
-// Потому что var игнорирует блоки (if, for, {})
-// и работает только внутри функцииx
-
-// 2. Пример с функцией
-
-// function test() {
-//   if (true) {
-//     var x = 5;
-//   }
-      // тут нормально — внутри функции всё видно
-//   // console.log(x); // 5
-// }
-
-// console.log(x); // common.js:27 Uncaught ReferenceError: x is not defined at ...
-// test();
-
-// --------------------------------------------------------------------
-// let
-// 1. block scope
-// if (true) {
+// --------------------------
+// {
+//   console.log(x); // Uncaught ReferenceError: Cannot access 'x' before initialization
 //   let x = 5;
 // }
 
-// console.log(x); // common.js:44 Uncaught ReferenceError: x is not defined
 
-// 2. Нельзя переобъявить в одном scope
-// let a = 10;
-// let a = 20; // SyntaxError
-
-// var a = 10;
-// var a = 20; // можно
-// поэтому var опасен
-
-// 3. Можно изменить значение
-
-// let a = 10;
-// a = 20;
-// console.log(a); // 20
+// --------------------------
+// sayHello(); // работает
+// function sayHello() {
+//   console.log("Hello");
+// }
 
 
-// --------------------------------------------------------------------
-// const
-// const a = 10;
+// --------------------------
+// sayHello(); // TypeError
 
-// block scope
-// нельзя изменить
-// нельзя переобъявить
+// var sayHello = function () {
+//   console.log("Hello");
+// };
 
-// const obj = { name: "Rashad" };
-// obj.name = "Test"; // можно (ссылка не меняется)
+// Как видит JS:
+// var sayHello; // undefined
+// sayHello(); // undefined is not a function
 
-// const → по умолчанию (best practice)
+// --------------------------
+
+// var a = 1;
+
+// function test() {
+//   console.log(a);
+//   var a = 2;
+// }
+
+// test(); // undefined
+
+
+// var a = 1;
+
+// function test() {
+//   console.log(a);
+// }
+
+// test(); // 1
+
+
+let a = 1;
+
+function test() {
+  console.log(a);
+  a = 2;
+}
+
+ test();

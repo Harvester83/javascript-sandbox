@@ -1,13 +1,20 @@
-function createCounter() {
-  let count = 0; // эта переменная "захватывается"
+// function createCounter() {
+//   let count = 0; // эта переменная "захватывается"
 
-  return function() {
-    count++;
-    return count;
-  };
-}
+//   return function() {
+//     count++;
+//     return count;
+//   };
+// }
 
-const counter = createCounter(); // createCounter завершилась...
-console.log(counter()); // 1  — но count всё ещё жива!
-console.log(counter()); // 2
-console.log(counter()); // 3
+
+// function gradeNumber(x) {
+//   return (y) => x * y; 
+// }
+
+// const double = gradeNumber(2);
+// const tripoul = gradeNumber(3);
+
+// console.log('double(5): ', double(5)) // 10
+// console.log('tripoul(5): ', tripoul(5)) // 15
+
